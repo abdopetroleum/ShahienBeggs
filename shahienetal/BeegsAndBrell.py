@@ -4,17 +4,7 @@ import shahienetal.FluidProperties as FluidProperties
 seperator=FluidProperties.Seperator(14.7,60)
 
 def Flow_regime(Nfr, laml, L1, L2, L3, L4):
-    """Function to Determine the Flow Regime by the Method of Beggs and Brill"""
-    # The function returns a number indicating the flow regime
-    #   1 = Segregated flow
-    #   2 = Transition flow
-    #   3 = Intermittent flow
-    #   4 = Distributed flow
-    # Nfr        Froude Number
-    # laml       Input liquid fraction
-    # L1,2,3,4   Dimensionless constants
 
-    # Regime 1 - Segregated flow
     regime=0
     if (((laml <= 0.01) and (Nfr <= L1)) or ((laml >= 0.01) and (Nfr < L2))):
         regime = 1
@@ -37,6 +27,7 @@ def Flow_regime(Nfr, laml, L1, L2, L3, L4):
 
 
 fluidProperties:FluidProperties.FluidProperties
+
 def calculatePVTProerties(P, T, Gor, gas_grav, oil_grav, wtr_grav):
     oil = FluidProperties.Oil(oil_grav)
     gas = FluidProperties.Gas(gas_grav,FluidProperties.ConcreteTC(),FluidProperties.ConcretePC())
@@ -46,13 +37,6 @@ def calculatePVTProerties(P, T, Gor, gas_grav, oil_grav, wtr_grav):
 
 
 def Liq_holdup(Nfr, Nvl, laml, angle, regime):
-    """Function to Calculate Liquid Holdup for the Segregated, Intermittent and Distributed Regimes
-    by the Method of Beggs and Brill"""
-    # Nfr        Froude number
-    # Nvl        Liquid velocity number
-    # angle      pipe inclination in degrees
-    # regime     flow regime 1 = segregated, 3 = intermittent, 4 = distributed
-
     # Define constants
     if (regime == 1):
         a = 0.98
@@ -126,7 +110,6 @@ def Fric(Nre, eps):
 
     return (1 / Temp) ** 2
 
-
 def Pgrad(P, T, oil_rate, wtr_rate, Gor, gas_grav, oil_grav, wtr_grav, d, angle):
     """Function to Calculate the Flowing  Gradient by the Method of Beggs and Brill"""
     # P          pressure, psia
@@ -144,7 +127,7 @@ def Pgrad(P, T, oil_rate, wtr_rate, Gor, gas_grav, oil_grav, wtr_grav, d, angle)
 
     # Set constants
 
-    pi = math.pi  # 4 * math.atan(1)                                               #Define pi
+    pi = math.pi  # 4 * math.atan(1)   #Define pi
     # Convert pipe angle from degrees to radians
     angle = angle * pi / 180
     Wor = wtr_rate / oil_rate

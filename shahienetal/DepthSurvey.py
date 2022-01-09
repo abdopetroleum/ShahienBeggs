@@ -56,7 +56,7 @@ def plot_traverse(liquid_rate,true_depths,measured_depths,
                   glr=0,
                   wc=0,gas_grav =0.65,oil_grav = 35,wtr_grav = 1.07,
                   diameter=1.922,
-                margin=30,thp= 0,sample_size =100):
+                  margin=30,thp= 0,sample_size =100):
 
     p,depths,x=pressure_traverse(liquid_rate=liquid_rate,true_depths=true_depths,measured_depths=measured_depths,
                         tht=tht,twf=twf,

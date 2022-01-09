@@ -393,7 +393,6 @@ class MugLee(IMug):
         return K * math.exp(x * rho ** Y) / 10000
 
 class FluidProperties:
-
     def __init__(self,fluid:Fluid,seperator:Seperator,p,t,bubble_point_method:IBubblePoint,z_method:IZ
                  ,rso_method:IRSO,rsw_method:IRSW,co_method:ICo,bo_method:IBo
                  ,muo_method:IMuo,muw_method:IMuw,mug_method:IMug,sigw_method:ISigW,
@@ -471,29 +470,3 @@ def getProperties(fluid,seperator,p,t):
                       ConcreteSigo()
                       )
 
-#fluid=Fluid(Oil(35),Gas(.65,ConcreteTC(),ConcretePC()),Water(1.07,ConcreteSalinty()),1400)
-#print(getProperties(fluid,Seperator(14.7,60),400,150).Pb)
-
-'''props=FluidProperties(fluid,Seperator(14.7,60),400,150,BubblePointBeggs(),ZBegs(),RsoBeggs(),RSWCraft()
-                      ,CoBeggs(),BoBeggs(),MuoBeggs(),MuwBeggs(),MugLee(),
-                      ConcreteSigw(),
-                      ConcreteSigo()
-                      )
-
-print(props.BW)
-print(props.Bg)
-print(props.Pb)
-print(props.Bg)
-print(props.Rso)
-print(props.fluid.water.sality)
-print(props.Rsw)
-print(props.co)
-print(props.Bo)
-print(props.Muo)
-print(props.Muw)
-print(props.Mug)
-print(props.Rhoo)
-print(props.Rhow)
-print(props.Rhog)
-print(props.Sigw)
-print(props.Sigo)'''

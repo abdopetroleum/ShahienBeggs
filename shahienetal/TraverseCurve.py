@@ -25,7 +25,7 @@ def pressure_traverse(liquid_rate,depth,tht=150,twf=150,glr=0,wc=0,gas_grav =0.6
         while (True):
             dpdz_step = BB.Pgrad(pavg, temps[i], oil_rate, water_rate, gor, gas_grav, oil_grav, wtr_grav, diameter,
                                   angle)
-            if (p[i] + .5 * dpdz_step * (depths[i + 1] - depths[i]) - pavg < .01):
+            if (p[i] + .5 * dpdz_step * (depths[i + 1] - depths[i]) - pavg < .1):
                 break
             else:
                 pavg = p[i] + .5 * dpdz_step * (depths[i + 1] - depths[i])
